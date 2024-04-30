@@ -21,7 +21,7 @@ func Test_cockpitOutputDecorator(t *testing.T) {
 
 	time.Sleep(frame * 2)
 
-	t.Log("skipping tet as it requires to be run with TTY")
+	//  skipping test as it requires to be run with TTY
 	t.SkipNow()
 
 	if !strings.Contains(b.String(), "Running: task1") {
