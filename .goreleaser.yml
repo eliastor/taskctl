@@ -58,18 +58,18 @@ changelog:
 #       taskctl:
 #         completer: autocomplete/bash_completion.bash
 
-brews:
-  - tap:
-      owner: taskctl
-      name: homebrew-taskctl
-    commit_author:
-      name: eliastor
-      email: eliastor@users.noreply.github.com
-    homepage: https://github.com/eliastor/taskctl
-    install: |
-        bin.install "taskctl"
-        bash_completion.install "autocomplete/bash_completion.bash"
-        zsh_completion.install "autocomplete/zsh_completion.zsh"
+# brews:
+#   - tap:
+#       owner: taskctl
+#       name: homebrew-taskctl
+#     commit_author:
+#       name: eliastor
+#       email: eliastor@users.noreply.github.com
+#     homepage: https://github.com/eliastor/taskctl
+#     install: |
+#         bin.install "taskctl"
+#         bash_completion.install "autocomplete/bash_completion.bash"
+#         zsh_completion.install "autocomplete/zsh_completion.zsh"
 
 dockers:
   - image_templates:
