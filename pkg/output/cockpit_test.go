@@ -21,8 +21,11 @@ func Test_cockpitOutputDecorator(t *testing.T) {
 
 	time.Sleep(frame * 2)
 
+	t.Log("skipping tet as it requires to be run with TTY")
+	t.SkipNow()
+
 	if !strings.Contains(b.String(), "Running: task1") {
-		t.Fatal()
+		t.Fail()
 	}
 
 	n, err := dec.Write([]byte("lorem ipsum"))
@@ -40,7 +43,6 @@ func Test_cockpitOutputDecorator(t *testing.T) {
 	}
 
 	time.Sleep(frame * 2)
-
 	if !strings.Contains(b.String(), "Finished") {
 		t.Fatal()
 	}
