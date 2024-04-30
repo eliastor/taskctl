@@ -65,7 +65,7 @@ brews:
     commit_author:
       name: Yevhen Terentiev
       email: yevhen.terentiev@gmail.com
-    homepage: https://github.com/taskctl/taskctl
+    homepage: https://github.com/eliastor/taskctl
     install: |
         bin.install "taskctl"
         bash_completion.install "autocomplete/bash_completion.bash"
@@ -73,8 +73,8 @@ brews:
 
 dockers:
   - image_templates:
-      - "docker.io/taskctl/taskctl:latest"
-      - "docker.io/taskctl/taskctl:{{ .Tag }}"
+      - "docker.io/eliastor/taskctl:latest"
+      - "docker.io/eliastor/taskctl:{{ .Tag }}"
     skip_push: auto
 
 scoop:
@@ -84,11 +84,11 @@ scoop:
   commit_author:
     name: Yevhen Terentiev
     email: yevhen.terentiev@gmail.com
-  homepage: https://github.com/taskctl/taskctl
+  homepage: https://github.com/eliastor/taskctl
 
 nfpms:
   -
-    homepage: https://github.com/taskctl/taskctl
+    homepage: https://github.com/eliastor/taskctl
     maintainer: Yevhen Terentiev <yevhen.terentiev@gmail.com>
     description: taskctl - concurrent task runner, developer's routine tasks automation toolkit. Simple modern alternative to GNU Make 🧰
     formats:
