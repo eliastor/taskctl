@@ -1,22 +1,22 @@
 <p align="center">
-<img width="400" src="https://raw.githubusercontent.com/taskctl/taskctl/master/docs/logo.png" alt="taskctl - developer's routine tasks automation toolkit" title="taskctl - developer's routine tasks automation toolkit" />
+<img width="400" src="https://raw.githubusercontent.com/eliastor/taskctl/master/docs/logo.png" alt="taskctl - developer's routine tasks automation toolkit" title="taskctl - developer's routine tasks automation toolkit" />
 </p>
 
 # taskctl - concurrent task runner, developer's routine tasks automation toolkit
-[![pkg.go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat)](https://pkg.go.dev/github.com/taskctl/taskctl?tab=doc)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/taskctl/taskctl)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/taskctl/taskctl)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/taskctl/taskctl)
-![GitHub issues](https://img.shields.io/github/issues/taskctl/taskctl)
-![Licence](https://img.shields.io/github/license/taskctl/taskctl)
+[![pkg.go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat)](https://pkg.go.dev/github.com/eliastor/taskctl?tab=doc)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/eliastor/taskctl)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/eliastor/taskctl)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/eliastor/taskctl)
+![GitHub issues](https://img.shields.io/github/issues/eliastor/taskctl)
+![Licence](https://img.shields.io/github/license/eliastor/taskctl)
 
-![Tests](https://github.com/taskctl/taskctl/workflows/Test/badge.svg)
-[![Requirements Status](https://requires.io/github/taskctl/taskctl/requirements.svg?branch=master)](https://requires.io/github/taskctl/taskctl/requirements/?branch=master)
-![GitHub top language](https://img.shields.io/github/languages/top/taskctl/taskctl)
-[![Go Report Card](https://goreportcard.com/badge/github.com/taskctl/taskctl)](https://goreportcard.com/report/github.com/taskctl/taskctl)
-[![Test Coverage](https://codecov.io/gh/taskctl/taskctl/branch/master/graph/badge.svg)](https://codecov.io/gh/taskctl/taskctl/tree/master/pkg)
+![Tests](https://github.com/eliastor/taskctl/workflows/Test/badge.svg)
+[![Requirements Status](https://requires.io/github/eliastor/taskctl/requirements.svg?branch=master)](https://requires.io/github/eliastor/taskctl/requirements/?branch=master)
+![GitHub top language](https://img.shields.io/github/languages/top/eliastor/taskctl)
+[![Go Report Card](https://goreportcard.com/badge/github.com/eliastor/taskctl)](https://goreportcard.com/report/github.com/eliastor/taskctl)
+[![Test Coverage](https://codecov.io/gh/eliastor/taskctl/branch/master/graph/badge.svg)](https://codecov.io/gh/eliastor/taskctl/tree/master/pkg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](https://github.com/taskctl/taskctl/pulls)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](https://github.com/eliastor/taskctl/pulls)
 
 ---
 
@@ -69,43 +69,58 @@ According to this plan `lint` and `test` will run concurrently, `build` will sta
 [![asciicast](https://asciinema.org/a/326726.svg)](https://asciinema.org/a/326726)
 
 ## Contents  
-- [Getting started](#getting-started)
-  - [Installation](#install)
-  - [Usage](#usage)
-- [Configuration](#configuration)
-    - [Global configuration](#global-configuration)
+- [taskctl - concurrent task runner, developer's routine tasks automation toolkit](#taskctl---concurrent-task-runner-developers-routine-tasks-automation-toolkit)
+  - [Features](#features)
+  - [Contents](#contents)
+  - [Getting started](#getting-started)
+    - [Install](#install)
+      - [MacOS](#macos)
+      - [Linux](#linux)
+      - [Ubuntu Linux](#ubuntu-linux)
+      - [deb/rpm:](#debrpm)
+      - [Windows](#windows)
+      - [Installation script](#installation-script)
+      - [From sources](#from-sources)
+      - [Docker images](#docker-images)
+    - [Usage](#usage)
+  - [Configuration](#configuration)
     - [Example](#example)
-- [Tasks](#tasks)
+    - [Global configuration](#global-configuration)
+  - [Tasks](#tasks)
+    - [Tasks variables](#tasks-variables)
     - [Pass CLI arguments to task](#pass-cli-arguments-to-task)
-    - [Task's variations](#tasks-variations)
-    - [Task's variables](#tasks-variables)
-    - [Storing task's output](#storing-tasks-output) 
-    - [Conditional execution](#task-conditional-execution) 
-- [Pipelines](#pipelines)
-- [Filesystem watchers](#filesystem-watchers)
+    - [Storing task's output](#storing-tasks-output)
+    - [Tasks variations](#tasks-variations)
+    - [Task conditional execution](#task-conditional-execution)
+  - [Pipelines](#pipelines)
+  - [Taskctl output formats](#taskctl-output-formats)
+  - [Filesystem watchers](#filesystem-watchers)
     - [Patterns](#patterns)
-- [Contexts](#contexts)
-- [Output formats](#taskctl-output-formats)
-- [Embeddable task runner](#embeddable-task-runner)
+  - [Contexts](#contexts)
+    - [Docker context](#docker-context)
+  - [Embeddable task runner](#embeddable-task-runner)
     - [Runner](#runner)
     - [Scheduler](#scheduler)
-- [FAQ](#faq)
-  - [How does it differ from go-task/task?](#how-does-it-differ-from-go-tasktask)
-- [Autocomplete](#autocomplete)
-- [Similar projects](#similar-projects)
-- [How to contribute?](#how-to-contribute)
-- [License](#license)
+  - [FAQ](#faq)
+    - [How does it differ from go-task/task?](#how-does-it-differ-from-go-tasktask)
+  - [Autocomplete](#autocomplete)
+    - [Bash](#bash)
+    - [ZSH](#zsh)
+    - [Similar projects](#similar-projects)
+  - [How to contribute?](#how-to-contribute)
+  - [License](#license)
+  - [Authors](#authors)
 
 ## Getting started
 ### Install
 #### MacOS
 ```
-brew tap taskctl/taskctl
+brew tap eliastor/taskctl
 brew install taskctl
 ```
 #### Linux
 ```
-sudo wget https://github.com/taskctl/taskctl/releases/latest/download/taskctl_linux_amd64 -O /usr/local/bin/taskctl
+sudo wget https://github.com/eliastor/taskctl/releases/latest/download/taskctl_linux_amd64 -O /usr/local/bin/taskctl
 sudo chmod +x /usr/local/bin/taskctl
 ```
 #### Ubuntu Linux
@@ -114,7 +129,7 @@ sudo snap install --classic taskctl
 ```
 
 #### deb/rpm:
-Download the .deb or .rpm from the [releases](https://github.com/taskctl/taskctl/releases) page and install with `dpkg -i` 
+Download the .deb or .rpm from the [releases](https://github.com/eliastor/taskctl/releases) page and install with `dpkg -i` 
 and `rpm -i` respectively.
 
 #### Windows
@@ -124,16 +139,16 @@ scoop install taskctl
 ```
 #### Installation script
 ```
-curl -sL https://raw.githubusercontent.com/taskctl/taskctl/master/install.sh | sh
+curl -sL https://raw.githubusercontent.com/eliastor/taskctl/master/install.sh | sh
 ```
 #### From sources
 ```
-git clone https://github.com/taskctl/taskctl
+git clone https://github.com/eliastor/taskctl
 cd taskctl
 go build -o taskctl .
 ```
 #### Docker images
-Docker images available on [Docker hub](https://hub.docker.com/repository/docker/taskctl/taskctl)
+Docker images available on [Docker hub](https://hub.docker.com/repository/docker/eliastor/taskctl)
 
 ### Usage
 - `taskctl` - run interactive task prompt
@@ -156,11 +171,11 @@ Config file may import other config files, directories or URLs.
 import:
 - .tasks/database.yaml
 - .tasks/lint/
-- https://raw.githubusercontent.com/taskctl/taskctl/master/docs/example.yaml
+- https://raw.githubusercontent.com/eliastor/taskctl/master/docs/example.yaml
 ```
 
 ### Example
-Config file [example](https://github.com/taskctl/taskctl/blob/master/docs/example.yaml)
+Config file [example](https://github.com/eliastor/taskctl/blob/master/docs/example.yaml)
 
 ### Global configuration
 *taskctl* has global configuration stored in ``$HOME/.taskctl/config.yaml`` file. It is handy to store system-wide tasks, reusable contexts, defaults etc. 
@@ -309,7 +324,7 @@ pipelines:
           depends_on: ["task E"]    
 ```
 will result in an execution plan like this:
-![execution plan](https://raw.githubusercontent.com/taskctl/taskctl/master/docs/pipeline.svg)
+![execution plan](https://raw.githubusercontent.com/eliastor/taskctl/master/docs/pipeline.svg)
 
 Stage definition takes following parameters:
 - `name` - stage name. If not set - referenced task or pipeline name will be used.
@@ -404,7 +419,7 @@ tasks:
 
 ## Embeddable task runner
 *taskctl* may be embedded into any go program. 
-Additional information may be found on taskctl's [pkg.go.dev](https://pkg.go.dev/github.com/taskctl/taskctl?tab=overview) page
+Additional information may be found on taskctl's [pkg.go.dev](https://pkg.go.dev/github.com/eliastor/taskctl?tab=overview) page
 
 ### Runner
 ```go
@@ -470,7 +485,7 @@ Add to  ~/.zshrc
 
 ## How to contribute?
 Feel free to contribute in any way you want. Share ideas, submit issues, create pull requests. 
-You can start by improving this [README.md](https://github.com/taskctl/taskctl/blob/master/README.md) or suggesting new [features](https://github.com/taskctl/taskctl/issues)
+You can start by improving this [README.md](https://github.com/eliastor/taskctl/blob/master/README.md) or suggesting new [features](https://github.com/eliastor/taskctl/issues)
 Thank you! 
 
 ## License
@@ -478,4 +493,4 @@ This project is licensed under the GNU GPLv3 - see the [LICENSE.md](LICENSE.md) 
 
 ## Authors
  - Yevhen Terentiev - [trntv](https://github.com/trntv)
-See also the list of [contributors](https://github.com/taskctl/taskctl/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/eliastor/taskctl/contributors) who participated in this project.
