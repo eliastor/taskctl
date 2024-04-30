@@ -77,20 +77,20 @@ dockers:
       - "docker.io/eliastor/taskctl:{{ .Tag }}"
     skip_push: auto
 
-scoop:
-  bucket:
-    owner: taskctl
-    name: scoop-taskctl
-  commit_author:
-    name: eliastor
-    email: eliastor@users.noreply.github.com
-  homepage: https://github.com/eliastor/taskctl
+# scoop:
+#   bucket:
+#     owner: taskctl
+#     name: scoop-taskctl
+#   commit_author:
+#     name: eliastor
+#     email: eliastor@users.noreply.github.com
+#   homepage: https://github.com/eliastor/taskctl
 
-nfpms:
-  -
-    homepage: https://github.com/eliastor/taskctl
-    maintainer: eliastor <eliastor@users.noreply.github.com>
-    description: taskctl - concurrent task runner, developer's routine tasks automation toolkit. Simple modern alternative to GNU Make 🧰
-    formats:
-      - deb
-      - rpm
+# nfpms:
+#   -
+#     homepage: https://github.com/eliastor/taskctl
+#     maintainer: eliastor <eliastor@users.noreply.github.com>
+#     description: taskctl - concurrent task runner, developer's routine tasks automation toolkit. Simple modern alternative to GNU Make 🧰
+#     formats:
+#       - deb
+#       - rpm
