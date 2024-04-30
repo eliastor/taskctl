@@ -8,6 +8,7 @@ import (
 	"os/signal"
 	"sort"
 	"strings"
+	"sync"
 	"syscall"
 
 	"github.com/taskctl/taskctl/pkg/runner"
@@ -27,6 +28,7 @@ var version = "dev"
 
 var stdin io.ReadCloser
 
+var cancelOnce = &sync.Once{}
 var cancel = make(chan struct{})
 
 var cfg *config.Config
@@ -251,7 +253,9 @@ func rootAction(c *cli.Context) (err error) {
 }
 
 func abort() {
-	close(cancel)
+	cancelOnce.Do(func() {
+		close(cancel)
+	})
 }
 
 func buildTaskRunner(c *cli.Context) (*runner.TaskRunner, error) {
