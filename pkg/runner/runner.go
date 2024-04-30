@@ -11,6 +11,8 @@ import (
 	"time"
 
 	"github.com/taskctl/taskctl/pkg/executor"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 
 	"github.com/taskctl/taskctl/pkg/variables"
 
@@ -328,7 +330,7 @@ func (r *TaskRunner) checkTaskCondition(t *task.Task) (bool, error) {
 
 func (r *TaskRunner) storeTaskOutput(t *task.Task) {
 	var envVarName string
-	varName := fmt.Sprintf("Tasks.%s.Output", strings.Title(t.Name))
+	varName := fmt.Sprintf("Tasks.%s.Output", cases.Title(language.English).String(t.Name))
 
 	if t.ExportAs == "" {
 		envVarName = fmt.Sprintf("%s_OUTPUT", strings.ToUpper(t.Name))
